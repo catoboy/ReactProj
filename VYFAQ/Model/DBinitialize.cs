@@ -21,6 +21,30 @@ namespace VYFAQ.Model
                         question = "Hvor kjøper jeg billett?",
                         answer = "Spør Cato",
                         time = "Nå"
+                    },
+                    new QA()
+                    {
+                        question = "Hvor kjøper jeg billett?",
+                        answer = "Spør Cato",
+                        time = "Nå"
+                    },
+                    new QA()
+                    {
+                        question = "Hvor kjøper jeg billett?",
+                        answer = "Spør Cato",
+                        time = "Nå"
+                    },                    
+                    new QA()
+                    {
+                        question = "Hvor kjøper jeg billett?",
+                        answer = "Spør Cato",
+                        time = "Nå"
+                    },                    
+                    new QA()
+                    {
+                        question = "Hvor kjøper jeg billett?",
+                        answer = "Spør Cato",
+                        time = "Nå"
                     }
                 };
 
