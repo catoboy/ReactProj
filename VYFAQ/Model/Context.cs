@@ -12,6 +12,7 @@ namespace VYFAQ.Model
         public Context(DbContextOptions<Context> options)
         : base(options) { }
         public DbSet<QA> QandA { get; set; }
+        public DbSet<innQA> innQA { get; set; }
 
     }
 }

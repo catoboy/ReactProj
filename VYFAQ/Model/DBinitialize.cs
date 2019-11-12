@@ -20,31 +20,31 @@ namespace VYFAQ.Model
                     {
                         question = "Hvor kjøper jeg billett?",
                         answer = "Spør Cato",
-                        time = "Nå"
+                        time = "12.11.2019 15:00"
                     },
                     new QA()
                     {
                         question = "Hvor kjøper jeg billett?",
                         answer = "Spør Cato",
-                        time = "Nå"
+                        time = "12.11.2019 17:00"
                     },
                     new QA()
                     {
                         question = "Hvor kjøper jeg billett?",
                         answer = "Spør Cato",
-                        time = "Nå"
+                        time = "05.11.2019 11:00"
                     },                    
                     new QA()
                     {
                         question = "Hvor kjøper jeg billett?",
                         answer = "Spør Cato",
-                        time = "Nå"
+                        time = "12.10.2019 09:00"
                     },                    
                     new QA()
                     {
                         question = "Hvor kjøper jeg billett?",
                         answer = "Spør Cato",
-                        time = "Nå"
+                        time = "01.05.2019 08:00"
                     }
                 };
 

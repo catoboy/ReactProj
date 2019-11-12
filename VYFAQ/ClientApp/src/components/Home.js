@@ -1,40 +1,48 @@
 import React, { Component } from 'react';
-import { FetchData } from './FetchData';
+import { Rating } from './Rating';
+
 
 export class Home extends Component {
-  static displayName = Home.name;    
-
-    render() {
-        const promise = fetch('api/QAs');
-        promise.then(data => data.json())
-            .then(data => {
-                console.log(data);
-                for (let i = 0; i < data.length; i++){
-                    let q = data[i].question;
-                    let a = data[i].answer;
-                    let id = data[i].id;
-                    let tid = data[i].time;
-                    const ut = document.getElementById("FAQboks");
-                    ut.insertAdjacentHTML("beforeend", 
-                        '<div>' +
-                        '<div class = "oversikt container-fluid">' +
-                            '<div class="row">' +
-                                '<div class="col-md-6">ID:'+id+'</div>' +
-                                '<div class="col-md-6">Tidspunkt:'+tid+'</div>' +
-                                '<div class="col-md-6">Q::'+q+' </div>' +
-                                '<div class="col-md-6">A:'+a+'</div>' +
-                            '</div>'+
-                        '</div>'+
-                        '</div>'
-                        );
-                }
+  static displayName = Home.name;
+  
+  constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+        };
+    }
+    
+    componentDidMount() {
+        fetch("api/QAs")
+            .then(response => response.json())
+            .then(responseJson => {
+                this.setState({data: responseJson});
+                console.log(this.state);
+            })
+            .catch(error => {
+                console.error(error)
             });
+       
+    }
+    
+    render() {
     return (
-        
-      <div id="FAQboks">
-            <h1>Velkommen til F.A.Q</h1>
-            <p>Her skjer det ting!</p>
-      </div>
+        <div className="container-fluid">
+            <h1>Velkommen</h1>
+            {this.state.data.map((obj, i) => {
+                return (
+                    <div key={i} className="card text-white bg-dark mb-3">
+                        <div id={obj.id} className="card-header">{obj.id}</div>
+                        <div className="card-body">
+                            <h5 className="card-title">Q:{obj.question}</h5>
+                            <p>A: {obj.answer}</p>
+                            <p>Tidpunkt: {obj.time}</p>
+                            <Rating rating={obj.rating} RatingId={obj.id}/>
+                        </div>
+                    </div>
+                )
+            })}
+        </div>
     );
     }
 }

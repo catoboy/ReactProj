@@ -11,52 +11,56 @@ namespace VYFAQ.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class QAsController : ControllerBase
+    public class innQAsController : ControllerBase
     {
         private readonly Context _context;
 
-        public QAsController(Context context)
+        public innQAsController(Context context)
         {
             _context = context;
         }
 
-        // GET: api/QAs
+        // GET: api/innQAs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<QA>>> GetQandA()
+        public async Task<ActionResult<IEnumerable<innQA>>> GetinnQA()
         {
-            return await _context.QandA.ToListAsync();
+            return await _context.innQA.ToListAsync();
         }
 
-        // GET: api/QAs/5
+        // GET: api/innQAs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<QA>> GetQA(int id)
+        public async Task<ActionResult<innQA>> GetinnQA(int id)
         {
-            var qA = await _context.QandA.FindAsync(id);
+            var innQA = await _context.innQA.FindAsync(id);
 
-            if (qA == null)
+            if (innQA == null)
             {
                 return NotFound();
             }
 
-            return qA;
+            return innQA;
         }
 
-        // PUT: api/QAs/5
+        // PUT: api/innQAs/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutQA(int rating, int ID)
+        public async Task<IActionResult> PutinnQA(int id, innQA innQA)
         {
+            if (id != innQA.ID)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(innQA).State = EntityState.Modified;
 
             try
             {
-                var q = _context.QandA.Find(ID);
-                q.rating += rating;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!QAExists(ID))
+                if (!innQAExists(id))
                 {
                     return NotFound();
                 }
@@ -69,37 +73,37 @@ namespace VYFAQ.Controllers
             return NoContent();
         }
 
-        // POST: api/QAs
+        // POST: api/innQAs
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<QA>> PostQA(QA qA)
+        public async Task<ActionResult<innQA>> PostinnQA(innQA innQA)
         {
-            _context.QandA.Add(qA);
+            _context.innQA.Add(innQA);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetQA", new { id = qA.ID }, qA);
+            return CreatedAtAction("GetinnQA", new { id = innQA.ID }, innQA);
         }
 
-        // DELETE: api/QAs/5
+        // DELETE: api/innQAs/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<QA>> DeleteQA(int id)
+        public async Task<ActionResult<innQA>> DeleteinnQA(int id)
         {
-            var qA = await _context.QandA.FindAsync(id);
-            if (qA == null)
+            var innQA = await _context.innQA.FindAsync(id);
+            if (innQA == null)
             {
                 return NotFound();
             }
 
-            _context.QandA.Remove(qA);
+            _context.innQA.Remove(innQA);
             await _context.SaveChangesAsync();
 
-            return qA;
+            return innQA;
         }
 
-        private bool QAExists(int id)
+        private bool innQAExists(int id)
         {
-            return _context.QandA.Any(e => e.ID == id);
+            return _context.innQA.Any(e => e.ID == id);
         }
     }
 }

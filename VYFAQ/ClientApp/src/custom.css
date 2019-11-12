@@ -13,7 +13,12 @@ code {
   border-color: #1861ac;
 }
 
-.oversikt{
-  font-size: 30px;
-  border: 2px solid black;
+.endreHeigth {
+  min-height: 10em;
 }
+
+.header{
+  text-align: center;
+}
+
+
