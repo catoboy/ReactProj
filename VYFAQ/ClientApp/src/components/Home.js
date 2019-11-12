@@ -28,14 +28,18 @@ export class Home extends Component {
     render() {
     return (
         <div className="container-fluid">
-            <h1>Velkommen</h1>
+            <h1 className="text-center">Ofte stilte spørsmål</h1>
             {this.state.data.map((obj, i) => {
                 return (
                     <div key={i} className="card text-white bg-dark mb-3">
                         <div id={obj.id} className="card-header">{obj.id}</div>
                         <div className="card-body">
-                            <h5 className="card-title">Q:{obj.question}</h5>
-                            <p>A: {obj.answer}</p>
+                            <h5 className="card-title text-center">Q:{obj.question}</h5>
+                            <blockquote className="blockquote text-center">
+                                <p className="">A: {obj.answer}</p>
+                                <footer className="blockquote-footer">F.A.Q fra <cite title="Source Title">VY.no</cite>
+                                </footer>
+                            </blockquote>
                             <p>Tidpunkt: {obj.time}</p>
                             <Rating rating={obj.rating} RatingId={obj.id}/>
                         </div>

@@ -17,10 +17,16 @@ export class Rating extends Component {
     render() {
         return (
 
-            <div>
-                <button onClick={() => this.ratingHandler(this.props.RatingId, 1)}>Up</button>
-                <p className = "text-white">{this.props.rating}</p>
-                <button onClick={() => this.ratingHandler(this.props.RatingId, -1)}>Down</button>
+            <div className="row">
+                <div className="col-md-4 text-right">
+                    <button className="btn btn-success" onClick={() => this.ratingHandler(this.props.RatingId, 1)}>Up</button>
+                </div>
+                <div className="col-md-4 text-center">
+                    <p>{this.props.rating}</p>
+                </div>
+                <div className="col-md-4 text-left">
+                    <button className="btn btn-danger" onClick={() => this.ratingHandler(this.props.RatingId, -1)}>Down</button>
+                </div>
             </div>
             )
     }

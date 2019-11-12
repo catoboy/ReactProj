@@ -10,7 +10,8 @@ export class SendInn extends Component {
             firstname: '',
             lastname: '',
             email: '',
-            question: ''
+            question: '',
+            time: new Date().toLocaleString()
         }
     }
 
@@ -43,7 +44,7 @@ export class SendInn extends Component {
                     lastname: '',
                     email: '',
                     question: '',
-                    time: '1500',
+                    time: '',
                 })
             })
             .catch(error => {
@@ -57,6 +58,7 @@ export class SendInn extends Component {
             <div>
                 <form action="" onSubmit={this.submitQ}>
                     <input
+                        required
                         type="text"
                         value={this.state.firstname}
                         name="firstname"
@@ -65,26 +67,33 @@ export class SendInn extends Component {
                         className="form-control"
                     />
                     <input
-                        type="test"
+                        required
+                        type="tesx"
                         value={this.state.lastname}
                         name="lastname"
                         onChange={this.changeHandler}
                         placeholder="Etternavn"
                         className="form-control"
                     />
-                    <input
+                    <div className="input-group-prepend">
+                        <div className="input-group-text">@</div>
+                        <input
+                        required
                         type="email"
                         value={this.state.email}
                         name="email"
                         onChange={this.changeHandler}
                         placeholder="E-mail"
                         className="form-control"
-                    />
+                        />
+                    </div>
+
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <span className="input-group-text">Spør her:</span>
                         </div>
                         <textarea
+                            required
                             className="endreHeigth form-control"
                             value={this.state.question}
                             name="question"
@@ -92,20 +101,25 @@ export class SendInn extends Component {
                             placeholder="Spørsmål"
                         />
                     </div>
-                    <button className="form-control btn btn-dark" type="submit" name="send">Send inn</button>
+                    <button className="form-control btn btn-dark btn-lg" type="submit" name="send">Send inn</button>
                 </form>
                 <div className="container-fluid">
-                    <h1>Innsendte spørsmål</h1>
+                    <h1 className="mt-5 text-center">Innsendte spørsmål</h1>
                     {this.state.data.map((obj, i) => {
                         return (
                             <div key={i} className="card text-white bg-dark mb-3">
                                 <div id={obj.id} className="card-header">{obj.id}</div>
                                 <div className="card-body">
-                                    <h5 className="card-title">Q:{obj.question}</h5>
-                                    <p>Fornavn: {obj.firstname}</p>
-                                    <p>Etternavn: {obj.lastname}</p>
-                                    <p>Email: {obj.email}</p>
-                                    <p>Tidpunkt: {obj.time}</p>
+                                    <h5 className="card-title text-center">Q:{obj.question}</h5>
+                                    <blockquote className="blockquote">
+                                        <p>Email: {obj.email}</p>
+                                        <footer className="blockquote-footer">Innsendt av:&nbsp;
+                                            <cite title="Source Title"> 
+                                                {obj.firstname}&nbsp;{obj.lastname}
+                                                <p>Tidpunkt: {obj.time}</p>
+                                            </cite>
+                                        </footer>
+                                    </blockquote>
                                 </div>
                             </div>
                         )

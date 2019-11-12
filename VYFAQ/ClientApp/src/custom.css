@@ -2,9 +2,12 @@
 a {
   color: #0366d6;
 }
-
 code {
   color: #E01A76;
+}
+
+body{
+    background-color: whitesmoke;
 }
 
 .btn-primary {
@@ -17,8 +20,8 @@ code {
   min-height: 10em;
 }
 
-.header{
-  text-align: center;
+header{
+  background-color: #343A40;
 }
 
 

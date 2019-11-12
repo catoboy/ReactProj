@@ -4,6 +4,10 @@
   word-break: break-all;
 }
 
+.navbar-brand{
+  color: white !important;
+}
+
 html {
   font-size: 14px;
 }
